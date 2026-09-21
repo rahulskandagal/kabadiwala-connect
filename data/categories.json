@@ -33,8 +33,7 @@
    "computer keyboard",
    "mouse",
    "space bar",
-   "typewriter keyboard",
-   "hard disc"
+   "typewriter keyboard"
   ]
  },
  {
@@ -56,7 +55,10 @@
    "digital clock",
    "joystick",
    "remote control",
-   "switch"
+   "switch",
+   "hard disc",
+   "solar dish",
+   "circuit"
   ]
  },
  {

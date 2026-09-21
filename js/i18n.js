@@ -24,7 +24,7 @@ window.I18N = {
     lang: 'Language', install: 'Install app', name: 'Your name', phone: 'Mobile number', save: 'Save', profile: 'Profile', collector_id: 'Collector ID',
     console_link: 'Recycler console', select_recycler_first: 'Choose a recycler first (Recyclers tab).', add_items_first: 'Save at least one item first (Price tab).',
     model_loading: 'Loading AI model (first time only)…', model_ready: 'AI ready', model_failed: 'AI unavailable offline — pick the material manually.',
-    voice_ask: 'Ask by voice', not_sure: 'Not sure? Pick below', hazard_tip: 'Safety tip',
+    voice_ask: 'Ask by voice', not_sure: 'Not sure? Pick below', hazard_tip: 'Safety tip', try_sample: 'No scrap nearby? Tap a sample photo:',
   },
   hi: {
     app: 'कबाड़ीवाला कनेक्ट', tagline: 'सही दाम · अधिकृत रीसाइक्लर · डिजिटल रसीद',
@@ -50,7 +50,7 @@ window.I18N = {
     lang: 'भाषा', install: 'ऐप इंस्टॉल करें', name: 'आपका नाम', phone: 'मोबाइल नंबर', save: 'सेव', profile: 'प्रोफ़ाइल', collector_id: 'कलेक्टर ID',
     console_link: 'रीसाइक्लर कंसोल', select_recycler_first: 'पहले रीसाइक्लर चुनें (रीसाइक्लर टैब)।', add_items_first: 'पहले कम से कम एक आइटम सेव करें (दाम टैब)।',
     model_loading: 'AI मॉडल लोड हो रहा है (सिर्फ़ पहली बार)…', model_ready: 'AI तैयार', model_failed: 'ऑफ़लाइन में AI उपलब्ध नहीं — सामग्री खुद चुनें।',
-    voice_ask: 'बोलकर पूछें', not_sure: 'पक्का नहीं? नीचे से चुनें', hazard_tip: 'सुरक्षा सुझाव',
+    voice_ask: 'बोलकर पूछें', not_sure: 'पक्का नहीं? नीचे से चुनें', hazard_tip: 'सुरक्षा सुझाव', try_sample: 'पास में कबाड़ नहीं? नमूना फोटो पर टैप करें:',
   },
   mr: {
     app: 'कबाडीवाला कनेक्ट', tagline: 'योग्य भाव · अधिकृत रीसायकलर · डिजिटल पावती',
@@ -76,7 +76,7 @@ window.I18N = {
     lang: 'भाषा', install: 'अ‍ॅप इन्स्टॉल करा', name: 'तुमचे नाव', phone: 'मोबाईल क्रमांक', save: 'जतन', profile: 'प्रोफाइल', collector_id: 'संकलक ID',
     console_link: 'रीसायकलर कन्सोल', select_recycler_first: 'आधी रीसायकलर निवडा (रीसायकलर टॅब).', add_items_first: 'आधी किमान एक वस्तू जतन करा (भाव टॅब).',
     model_loading: 'AI मॉडेल लोड होत आहे (फक्त पहिल्यांदा)…', model_ready: 'AI तयार', model_failed: 'ऑफलाइनमध्ये AI उपलब्ध नाही — साहित्य स्वतः निवडा.',
-    voice_ask: 'बोलून विचारा', not_sure: 'खात्री नाही? खाली निवडा', hazard_tip: 'सुरक्षा सूचना',
+    voice_ask: 'बोलून विचारा', not_sure: 'खात्री नाही? खाली निवडा', hazard_tip: 'सुरक्षा सूचना', try_sample: 'जवळ भंगार नाही? नमुना फोटोवर टॅप करा:',
   },
 }
 window.LANG = localStorage.getItem('kc_lang') || 'hi'

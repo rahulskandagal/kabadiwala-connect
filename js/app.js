@@ -80,6 +80,8 @@
       <div class="row" style="margin-top:10px"><label class="btn g grow" style="margin:0">📷 ${esc(t('take_photo'))}<input type="file" accept="image/*" capture="environment" hidden id="cam"></label><label class="btn o" style="margin:0;width:auto;padding:14px 16px">🖼️<input type="file" accept="image/*" hidden id="gal"></label></div>
       <div id="ai" class="muted" style="margin-top:8px"></div>
       <div id="sugg" class="sugg"></div>
+      <div class="muted" style="margin-top:8px">${esc(t('try_sample'))}</div>
+      <div class="samples">${['laptop', 'phones', 'pcb', 'cables', 'battery', 'printer'].map((f) => `<img src="samples/${f}.jpg" data-sample="samples/${f}.jpg" alt="${f}">`).join('')}</div>
       <h4 style="margin-top:12px">${esc(t('pick_category'))}</h4>
       <div class="grid">${state.cats.map((c) => `<div class="cat ${state.cat === c.id ? 'sel' : ''}" data-id="${c.id}"><span class="ic">${c.icon}</span>${esc(c.name[LANG] || c.name.en)}</div>`).join('')}</div>
     </div>`)
@@ -87,6 +89,7 @@
     card.querySelectorAll('.cat').forEach((c) => c.onclick = () => { state.cat = c.dataset.id; render(); speak(priceSentence(state.cat)) })
     card.querySelector('#cam').onchange = (e) => onPhoto(e.target.files[0])
     card.querySelector('#gal').onchange = (e) => onPhoto(e.target.files[0])
+    card.querySelectorAll('[data-sample]').forEach((im) => im.onclick = async () => { const b = await fetch(im.dataset.sample).then((r) => r.blob()); onPhoto(new File([b], 'sample.jpg', { type: 'image/jpeg' })) })
     if (state.sugg.length) {
       $('#sugg').innerHTML = `<span class="muted" style="align-self:center">${esc(t('ai_suggests'))}:</span>` + state.sugg.map((s, i) => `<button class="${i === 0 ? 'top' : ''}" data-id="${s.id}">${cat(s.id).icon} ${esc(cname(s.id))} ${Math.round(s.score * 100)}%</button>`).join('')
       $('#sugg').querySelectorAll('button').forEach((b) => b.onclick = () => { state.cat = b.dataset.id; render() })
@@ -144,15 +147,16 @@
     if (!file) return
     const url = await new Promise((res) => { const fr = new FileReader(); fr.onload = () => res(fr.result); fr.readAsDataURL(file) })
     // downscale for storage + inference
-    const img = new Image(); img.src = url; await img.decode()
-    const cv = document.createElement('canvas'), sc = Math.min(1, 640 / Math.max(img.width, img.height)); cv.width = img.width * sc; cv.height = img.height * sc
+    let img
+    try { img = await createImageBitmap(file) } catch (e) { img = new Image(); img.src = url; await img.decode() }
+    const cv = document.createElement('canvas'), sc = Math.min(1, 640 / Math.max(img.width, img.height)); cv.width = Math.round(img.width * sc); cv.height = Math.round(img.height * sc)
     cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height)
     state.photo = cv.toDataURL('image/jpeg', 0.7); state.sugg = []; state.cat = null; render()
     const ai = $('#ai'); ai.textContent = AI.ready ? t('analysing') : t('model_loading')
     try {
       const { suggestions } = await AI.classify(cv)
       state.sugg = suggestions
-      if (suggestions[0] && suggestions[0].score > 0.15) state.cat = suggestions[0].id
+      if (suggestions[0] && suggestions[0].score > 0.2) state.cat = suggestions[0].id
       render(); $('#ai').textContent = suggestions.length ? t('model_ready') : t('not_sure')
       if (state.cat) speak(priceSentence(state.cat))
     } catch (e) { console.warn(e); $('#ai').textContent = t('model_failed') }

@@ -100,3 +100,7 @@ h2{margin:0 0 4px;font-size:20px}
 .center{text-align:center}
 input.txt{width:100%;border:2px solid var(--line);border-radius:12px;padding:12px;font-size:16px}
 a.link{color:var(--blue);font-weight:700}
+
+.samples{display:flex;gap:6px;overflow-x:auto;padding:6px 0 2px}
+.samples img{width:64px;height:64px;object-fit:cover;border-radius:10px;border:2px solid var(--line);flex:none;cursor:pointer}
+.samples img:active{border-color:var(--g)}

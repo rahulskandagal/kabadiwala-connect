@@ -1,8 +1,9 @@
 // Offline-first service worker: precache the app shell + datasets; cache CDN libraries and the
 // TF.js model files on first use so Snap & Value works in low-connectivity zones afterwards.
-const VERSION = 'kc-v1'
+const VERSION = 'kc-v2'
 const SHELL = ['./', 'index.html', 'recycler.html', 'manifest.webmanifest', 'css/app.css', 'js/i18n.js', 'js/db.js', 'js/ai.js', 'js/app.js',
-  'data/categories.json', 'data/prices.json', 'data/recyclers.json', 'data/safety.json', 'icons/icon-192.png', 'icons/icon-512.png']
+  'data/categories.json', 'data/prices.json', 'data/recyclers.json', 'data/safety.json', 'icons/icon-192.png', 'icons/icon-512.png',
+  'samples/laptop.jpg', 'samples/phones.jpg', 'samples/pcb.jpg', 'samples/cables.jpg', 'samples/battery.jpg', 'samples/printer.jpg']
 
 self.addEventListener('install', (e) => { e.waitUntil(caches.open(VERSION).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting())) })
 self.addEventListener('activate', (e) => { e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k !== VERSION).map((k) => caches.delete(k)))).then(() => self.clients.claim())) })
