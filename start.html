@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kabadiwala Connect — start here</title>
+  <link rel="icon" href="icons/icon-192.png">
+  <style>
+    body{margin:0;font-family:"Segoe UI",Roboto,Arial,sans-serif;background:#f1f5f9;color:#0f172a}
+    .wrap{max-width:960px;margin:0 auto;padding:28px 20px 60px}
+    h1{margin:0 0 4px;font-size:30px;color:#166534}
+    .sub{color:#64748b;margin:0 0 22px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+    .card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px;text-align:center}
+    .card h2{margin:0 0 6px;font-size:18px}
+    .card p{color:#64748b;font-size:14px;margin:0 0 12px}
+    .card img{width:220px;height:220px;image-rendering:pixelated;border-radius:8px;border:1px solid #e2e8f0}
+    .btn{display:inline-block;margin-top:10px;background:#166534;color:#fff;text-decoration:none;font-weight:800;padding:12px 18px;border-radius:12px}
+    .btn.o{background:#f97316}
+    .steps{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px 22px;margin-top:18px}
+    .steps ol{margin:8px 0 0;padding-left:20px;line-height:1.7}
+    code{background:#e2e8f0;border-radius:6px;padding:2px 6px;font-size:13px}
+    .lan{margin-top:8px;font-size:13px;color:#64748b}
+    .lang{font-size:13px;color:#64748b;margin-top:14px}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <h1>♻️ Kabadiwala Connect</h1>
+  <p class="sub">SIH26229 · Team Fire Orbit · Fair price · Authorized recycler · Digital handover — for informal scrap collectors</p>
+
+  <div class="grid">
+    <div class="card">
+      <h2>📱 Collector app</h2>
+      <p>Scan with any Android phone, then tap <b>Install</b> (or ⋮ → <i>Add to Home screen</i>). Works offline after the first open.</p>
+      <img src="icons/qr-app.png" alt="QR code for the collector app">
+      <br><a class="btn" href="index.html">Open the app</a>
+    </div>
+    <div class="card">
+      <h2>🏭 Recycler / MoM console</h2>
+      <p>Open on a laptop or tablet. Lots created in the app on the same device appear here instantly; confirm with the collector's OTP.</p>
+      <img src="icons/qr-console.png" alt="QR code for the recycler console">
+      <br><a class="btn o" href="recycler.html">Open the console</a>
+    </div>
+  </div>
+
+  <div class="steps">
+    <h2 style="margin:0">2-minute demo</h2>
+    <ol>
+      <li><b>Price</b> tab → tap a sample photo (or take one) → AI suggests the material → 🔊 hear the price → set weight → <b>Save</b>.</li>
+      <li><b>Recyclers</b> tab → <i>Use my location</i> → best match → <b>Book pickup</b>.</li>
+      <li>Choose <b>Cash</b> or <b>UPI</b> → <i>Create handover &amp; OTP</i> → OTP + QR receipt (GPS-stamped, hash-chained).</li>
+      <li><b>Console</b> (top-right) → select the recycler → enter the OTP → <b>Confirm</b> → <b>Mark paid</b>.</li>
+      <li>Back in the app → <b>Earnings</b> shows the paid deal → download the CSV statement.</li>
+      <li>Turn on airplane mode and reload — it still works.</li>
+    </ol>
+    <p class="lang">Language switch (हिंदी / मराठी / English) is at the top-right of the app. Voice needs a Hindi/Marathi TTS voice on the phone (Android has them built in).</p>
+    <p class="lan" id="lan"></p>
+  </div>
+</div>
+<script>
+  // When served from a laptop on the local network, show the phone-friendly URL.
+  if (location.hostname !== 'rahulskandagal.github.io' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+    document.getElementById('lan').textContent = 'Phones on the same Wi-Fi can open: ' + location.origin + location.pathname.replace(/start\.html$/, '')
+  } else if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+    document.getElementById('lan').textContent = 'Running locally. For phones on the same Wi-Fi use your laptop\'s IP address instead of localhost (the launcher prints it). Camera/GPS need HTTPS or localhost — use the hosted link on phones.'
+  }
+</script>
+</body>
+</html>

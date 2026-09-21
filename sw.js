@@ -2,8 +2,8 @@
 //  - App shell (html/js/css): network-first so updates land on the first online load; cache fallback offline.
 //  - Data, icons, sample photos: cache-first with background refresh.
 //  - CDN libraries and TF.js model weights: cached on first use so Snap & Value works in low-connectivity zones.
-const VERSION = 'kc-v4'
-const SHELL = ['./', 'index.html', 'recycler.html', 'manifest.webmanifest', 'css/app.css', 'js/i18n.js', 'js/db.js', 'js/ai.js', 'js/app.js',
+const VERSION = 'kc-v5'
+const SHELL = ['./', 'index.html', 'recycler.html', 'start.html', 'icons/qr-app.png', 'icons/qr-console.png', 'manifest.webmanifest', 'css/app.css', 'js/i18n.js', 'js/db.js', 'js/ai.js', 'js/app.js',
   'data/categories.json', 'data/prices.json', 'data/recyclers.json', 'data/safety.json', 'icons/icon-192.png', 'icons/icon-512.png',
   'samples/laptop.jpg', 'samples/phones.jpg', 'samples/pcb.jpg', 'samples/cables.jpg', 'samples/battery.jpg', 'samples/printer.jpg']
 
