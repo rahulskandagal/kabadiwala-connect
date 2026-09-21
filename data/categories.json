@@ -1,0 +1,214 @@
+[
+ {
+  "id": "mobile_phone",
+  "name": {
+   "en": "Mobile phones",
+   "hi": "मोबाइल फ़ोन",
+   "mr": "मोबाईल फोन"
+  },
+  "icon": "📱",
+  "hazard": "battery",
+  "hints": [
+   "cellular telephone",
+   "cellphone",
+   "hand-held computer",
+   "iPod",
+   "pay-phone",
+   "dial telephone"
+  ]
+ },
+ {
+  "id": "laptop",
+  "name": {
+   "en": "Laptops / desktops",
+   "hi": "लैपटॉप / कंप्यूटर",
+   "mr": "लॅपटॉप / संगणक"
+  },
+  "icon": "💻",
+  "hazard": "battery",
+  "hints": [
+   "laptop",
+   "notebook",
+   "desktop computer",
+   "computer keyboard",
+   "mouse",
+   "space bar",
+   "typewriter keyboard",
+   "hard disc"
+  ]
+ },
+ {
+  "id": "pcb",
+  "name": {
+   "en": "Circuit boards (PCB)",
+   "hi": "सर्किट बोर्ड (PCB)",
+   "mr": "सर्किट बोर्ड (PCB)"
+  },
+  "icon": "🔌",
+  "hazard": "leach",
+  "hints": [
+   "modem",
+   "radio",
+   "oscilloscope",
+   "cassette player",
+   "tape player",
+   "CD player",
+   "digital clock",
+   "joystick",
+   "remote control",
+   "switch"
+  ]
+ },
+ {
+  "id": "cable_copper",
+  "name": {
+   "en": "Copper cables",
+   "hi": "तांबे के तार",
+   "mr": "तांब्याच्या तारा"
+  },
+  "icon": "🧵",
+  "hazard": "burn",
+  "hints": [
+   "coil",
+   "chain",
+   "whistle",
+   "plug",
+   "hook"
+  ]
+ },
+ {
+  "id": "li_ion_battery",
+  "name": {
+   "en": "Li-ion batteries",
+   "hi": "लिथियम बैटरी",
+   "mr": "लिथियम बॅटरी"
+  },
+  "icon": "🔋",
+  "hazard": "fire",
+  "hints": [
+   "lighter",
+   "power drill"
+  ]
+ },
+ {
+  "id": "lead_acid_battery",
+  "name": {
+   "en": "Lead-acid batteries",
+   "hi": "लेड-एसिड बैटरी",
+   "mr": "लेड-अ‍ॅसिड बॅटरी"
+  },
+  "icon": "🪫",
+  "hazard": "acid",
+  "hints": [
+   "car battery"
+  ]
+ },
+ {
+  "id": "led_tv",
+  "name": {
+   "en": "LED / LCD TVs & monitors",
+   "hi": "LED / LCD टीवी, मॉनिटर",
+   "mr": "LED / LCD टीव्ही, मॉनिटर"
+  },
+  "icon": "📺",
+  "hazard": "mercury",
+  "hints": [
+   "television",
+   "monitor",
+   "screen",
+   "home theater",
+   "projector",
+   "entertainment center"
+  ]
+ },
+ {
+  "id": "crt",
+  "name": {
+   "en": "CRT TVs / monitors",
+   "hi": "CRT टीवी",
+   "mr": "CRT टीव्ही"
+  },
+  "icon": "🖥️",
+  "hazard": "lead",
+  "hints": [
+   "desktop computer",
+   "television"
+  ]
+ },
+ {
+  "id": "compressor",
+  "name": {
+   "en": "AC / fridge compressors",
+   "hi": "AC / फ्रिज कंप्रेसर",
+   "mr": "AC / फ्रीज कॉम्प्रेसर"
+  },
+  "icon": "❄️",
+  "hazard": "gas",
+  "hints": [
+   "refrigerator",
+   "icebox",
+   "air conditioner",
+   "space heater"
+  ]
+ },
+ {
+  "id": "small_appliance",
+  "name": {
+   "en": "Small appliances",
+   "hi": "छोटे उपकरण",
+   "mr": "लहान उपकरणे"
+  },
+  "icon": "🔧",
+  "hazard": "none",
+  "hints": [
+   "microwave",
+   "toaster",
+   "espresso maker",
+   "vacuum",
+   "hair drier",
+   "iron",
+   "electric fan",
+   "sewing machine",
+   "washer",
+   "dishwasher",
+   "blender",
+   "mixer",
+   "waffle iron",
+   "loudspeaker",
+   "table lamp",
+   "lampshade",
+   "spotlight"
+  ]
+ },
+ {
+  "id": "printer",
+  "name": {
+   "en": "Printers / copiers",
+   "hi": "प्रिंटर",
+   "mr": "प्रिंटर"
+  },
+  "icon": "🖨️",
+  "hazard": "toner",
+  "hints": [
+   "printer",
+   "photocopier",
+   "scanner"
+  ]
+ },
+ {
+  "id": "ewaste_plastic",
+  "name": {
+   "en": "E-waste plastics",
+   "hi": "ई-कचरा प्लास्टिक",
+   "mr": "ई-कचरा प्लास्टिक"
+  },
+  "icon": "♻️",
+  "hazard": "none",
+  "hints": [
+   "plastic bag",
+   "packet",
+   "carton",
+   "crate"
+  ]
+ }
+]

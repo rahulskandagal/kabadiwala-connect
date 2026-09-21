@@ -1,0 +1,134 @@
+[
+ {
+  "id": "battery",
+  "icon": "🔋",
+  "for": [
+   "li_ion_battery",
+   "mobile_phone",
+   "laptop"
+  ],
+  "en": [
+   "Keep batteries separate from metal scrap — short circuits start fires.",
+   "Never puncture or crush swollen batteries.",
+   "Store in a dry bucket with sand; tape the terminals."
+  ],
+  "hi": [
+   "बैटरी को धातु के कबाड़ से अलग रखें — शॉर्ट सर्किट से आग लगती है।",
+   "फूली हुई बैटरी को कभी न दबाएँ, न छेदें।",
+   "सूखी बाल्टी में रेत के साथ रखें; टर्मिनल पर टेप लगाएँ।"
+  ],
+  "mr": [
+   "बॅटरी धातूच्या भंगारापासून वेगळ्या ठेवा — शॉर्ट सर्किटमुळे आग लागते.",
+   "फुगलेली बॅटरी कधीही दाबू नका किंवा छिद्र पाडू नका.",
+   "कोरड्या बादलीत वाळूसोबत ठेवा; टर्मिनलवर टेप लावा."
+  ]
+ },
+ {
+  "id": "burn",
+  "icon": "🔥",
+  "for": [
+   "cable_copper"
+  ],
+  "en": [
+   "Do not burn cables to strip copper — the smoke contains dioxins that damage lungs.",
+   "Use a wire stripper or sell insulated cable; recyclers pay for it.",
+   "Burning is illegal under the E-Waste Rules and pollutes your own neighbourhood."
+  ],
+  "hi": [
+   "तांबा निकालने के लिए तार न जलाएँ — धुएँ में डायोक्सिन होता है जो फेफड़े खराब करता है।",
+   "वायर स्ट्रिपर उपयोग करें या तार बिना जलाए बेचें; रीसाइक्लर इसका दाम देते हैं।",
+   "जलाना ई-कचरा नियमों के तहत गैरकानूनी है और आपके मोहल्ले को प्रदूषित करता है।"
+  ],
+  "mr": [
+   "तांबे काढण्यासाठी तारा जाळू नका — धुरात डायऑक्सिन असते जे फुफ्फुसे खराब करते.",
+   "वायर स्ट्रिपर वापरा किंवा तार न जाळता विका; रीसायकलर त्याचे पैसे देतात.",
+   "जाळणे ई-कचरा नियमांनुसार बेकायदेशीर आहे आणि तुमच्याच वस्तीत प्रदूषण करते."
+  ]
+ },
+ {
+  "id": "leach",
+  "icon": "🧪",
+  "for": [
+   "pcb"
+  ],
+  "en": [
+   "Never use acid to pull gold from circuit boards — fumes burn skin and lungs.",
+   "Whole boards fetch a better price from authorized recyclers than home-extracted metal.",
+   "Wear gloves; wash hands before eating."
+  ],
+  "hi": [
+   "सर्किट बोर्ड से सोना निकालने के लिए तेज़ाब न डालें — भाप त्वचा और फेफड़े जला देती है।",
+   "पूरा बोर्ड अधिकृत रीसाइक्लर को बेचने पर घर पर निकाली धातु से ज़्यादा दाम मिलता है।",
+   "दस्ताने पहनें; खाने से पहले हाथ धोएँ।"
+  ],
+  "mr": [
+   "सर्किट बोर्डमधून सोने काढण्यासाठी आम्ल वापरू नका — वाफेने त्वचा व फुफ्फुसे भाजतात.",
+   "संपूर्ण बोर्ड अधिकृत रीसायकलरला विकल्यास घरी काढलेल्या धातूपेक्षा जास्त भाव मिळतो.",
+   "हातमोजे घाला; जेवण्यापूर्वी हात धुवा."
+  ]
+ },
+ {
+  "id": "crt",
+  "icon": "🖥️",
+  "for": [
+   "crt",
+   "led_tv"
+  ],
+  "en": [
+   "CRT glass contains lead; do not break the tube. Carry it upright.",
+   "LCD backlights contain mercury — do not smash panels.",
+   "Handover whole units; the recycler dismantles them safely."
+  ],
+  "hi": [
+   "CRT के काँच में सीसा होता है; ट्यूब न तोड़ें, सीधा उठाएँ।",
+   "LCD की बैकलाइट में पारा होता है — पैनल न तोड़ें।",
+   "पूरी यूनिट सौंपें; रीसाइक्लर उसे सुरक्षित तरीके से खोलता है।"
+  ],
+  "mr": [
+   "CRT च्या काचेत शिसे असते; ट्यूब फोडू नका, सरळ उचला.",
+   "LCD बॅकलाइटमध्ये पारा असतो — पॅनेल फोडू नका.",
+   "संपूर्ण युनिट सुपूर्द करा; रीसायकलर ते सुरक्षितपणे उघडतो."
+  ]
+ },
+ {
+  "id": "acid",
+  "icon": "⚠️",
+  "for": [
+   "lead_acid_battery"
+  ],
+  "en": [
+   "Lead-acid batteries leak sulphuric acid — keep upright, never open them.",
+   "Sell only to a registered battery recycler (Battery Waste Rules 2022).",
+   "If acid touches skin, rinse with plenty of water."
+  ],
+  "hi": [
+   "लेड-एसिड बैटरी से तेज़ाब रिसता है — सीधी रखें, कभी न खोलें।",
+   "केवल पंजीकृत बैटरी रीसाइक्लर को बेचें (बैटरी अपशिष्ट नियम 2022)।",
+   "तेज़ाब त्वचा पर लगे तो खूब पानी से धोएँ।"
+  ],
+  "mr": [
+   "लेड-अ‍ॅसिड बॅटरीतून आम्ल गळते — सरळ ठेवा, कधीही उघडू नका.",
+   "फक्त नोंदणीकृत बॅटरी रीसायकलरला विका (बॅटरी कचरा नियम 2022).",
+   "आम्ल त्वचेवर लागल्यास भरपूर पाण्याने धुवा."
+  ]
+ },
+ {
+  "id": "gas",
+  "icon": "❄️",
+  "for": [
+   "compressor"
+  ],
+  "en": [
+   "Do not cut compressors open — refrigerant gas is harmful and oil spills.",
+   "Authorized recyclers recover the gas; you still get paid for the copper and steel."
+  ],
+  "hi": [
+   "कंप्रेसर को काटकर न खोलें — गैस हानिकारक है और तेल फैलता है।",
+   "अधिकृत रीसाइक्लर गैस निकालते हैं; तांबे और लोहे का दाम आपको फिर भी मिलता है।"
+  ],
+  "mr": [
+   "कॉम्प्रेसर कापून उघडू नका — वायू हानिकारक असतो आणि तेल सांडते.",
+   "अधिकृत रीसायकलर वायू काढतात; तांबे आणि लोखंडाचे पैसे तुम्हाला तरीही मिळतात."
+  ]
+ }
+]

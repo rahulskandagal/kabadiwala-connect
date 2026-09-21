@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f172a">
+  <title>Kabadiwala Connect — Recycler Console</title>
+  <link rel="icon" href="icons/icon-192.png">
+  <style>
+    :root{--bg:#0f172a;--panel:#111c33;--line:#1e293b;--txt:#e2e8f0;--mut:#94a3b8;--g:#22c55e;--o:#f97316}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:"Segoe UI",Roboto,Arial,sans-serif}
+    .top{display:flex;align-items:center;gap:12px;padding:12px 18px;background:var(--panel);border-bottom:1px solid var(--line);flex-wrap:wrap}
+    .top b{font-size:17px}.top span{font-size:12px;color:var(--mut)}.top a{color:#7dd3fc;font-size:12px;margin-left:auto}
+    select{background:var(--panel);color:var(--txt);border:1px solid var(--line);border-radius:8px;padding:6px 8px}
+    .grid{display:grid;grid-template-columns:260px 1fr;gap:14px;padding:14px 18px}
+    @media(max-width:800px){.grid{grid-template-columns:1fr}}
+    .kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px}
+    .kpi .v{font-size:24px;font-weight:800}.kpi .l{font-size:11px;color:var(--mut)}
+    .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:14px}
+    h3{margin:0 0 10px;font-size:12px;color:#cbd5e1;text-transform:uppercase;letter-spacing:1px}
+    table{width:100%;border-collapse:collapse;font-size:12.5px}th{color:var(--mut);text-align:left;padding:6px 4px;border-bottom:1px solid var(--line);font-weight:600}td{padding:7px 4px;border-bottom:1px solid var(--line);vertical-align:middle}
+    .st{font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;white-space:nowrap}.created{background:#1e3a8a;color:#bfdbfe}.confirmed{background:#78350f;color:#fde68a}.paid{background:#064e3b;color:#a7f3d0}
+    button{border:0;border-radius:8px;padding:6px 10px;font-weight:700;cursor:pointer;font-size:12px}
+    .b-g{background:var(--g);color:#052e16}.b-o{background:var(--o);color:#fff}.b-x{background:#334155;color:var(--txt)}
+    input.otp{width:70px;background:#0b1220;color:#fff;border:1px solid var(--line);border-radius:6px;padding:5px;font-size:14px;letter-spacing:3px;text-align:center}
+    .mat{display:flex;gap:6px;flex-wrap:wrap}.mat div{background:#0b1220;border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-size:11px;min-width:76px}.mat b{display:block;font-size:14px}
+    .bars{display:flex;align-items:flex-end;gap:6px;height:110px;margin-top:6px}.bars div{flex:1;background:var(--g);border-radius:3px 3px 0 0;position:relative;min-height:2px}.bars div span{position:absolute;bottom:-16px;left:0;right:0;text-align:center;font-size:10px;color:var(--mut)}
+    .muted{color:var(--mut);font-size:12px}
+  </style>
+</head>
+<body>
+<div class="top">♻️ <b>Kabadiwala Connect — Recycler Console</b>
+  <select id="rec"></select><span id="recmeta"></span>
+  <a href="index.html">← Collector app</a>
+</div>
+<div class="grid">
+  <div>
+    <div class="kpi"><div class="v" id="k_kg">0 kg</div><div class="l">formal e-waste received (all lots)</div></div>
+    <div class="kpi"><div class="v" id="k_paid">₹ 0</div><div class="l">paid to collectors</div></div>
+    <div class="kpi"><div class="v" id="k_lots">0</div><div class="l">traceable handover records</div></div>
+    <div class="kpi"><div class="v" id="k_pend">0</div><div class="l">awaiting confirmation (OTP)</div></div>
+    <div class="panel"><h3>Materials received (kg)</h3><div class="mat" id="mats"></div></div>
+    <div class="panel"><h3>Actions</h3><button class="b-x" id="csv">⬇ EPR / Form-6 export (CSV)</button> <button class="b-x" id="demo" style="margin-top:6px">＋ Add demo lots</button><p class="muted" style="margin:8px 0 0">Records are hash-chained (SHA-256). Export verifies the chain.</p></div>
+  </div>
+  <div>
+    <div class="panel"><h3>Incoming lots</h3><table><thead><tr><th>Trace ID</th><th>Time</th><th>Collector</th><th>Items</th><th>kg</th><th>Amount</th><th>Pay</th><th>GPS</th><th>Status</th><th>Action</th></tr></thead><tbody id="rows"></tbody></table><p class="muted" id="empty">No lots yet. Create a handover in the collector app (same device) — it appears here instantly.</p></div>
+    <div class="panel"><h3>Weekly intake (kg)</h3><div class="bars" id="bars"></div><div style="height:16px"></div></div>
+  </div>
+</div>
+<script src="js/db.js"></script>
+<script>
+(async () => {
+  const $ = (s) => document.querySelector(s)
+  const inr = (n) => '₹ ' + Math.round(n).toLocaleString('en-IN')
+  const cats = await fetch('data/categories.json').then((r) => r.json())
+  const recs = await fetch('data/recyclers.json').then((r) => r.json())
+  const icon = (id) => (cats.find((c) => c.id === id) || {}).icon || '♻️'
+  $('#rec').innerHTML = recs.map((r) => `<option value="${r.id}">${r.name}</option>`).join('')
+  let recId = localStorage.getItem('kc_console_rec') || recs[0].id
+  $('#rec').value = recId
+  $('#rec').onchange = () => { recId = $('#rec').value; localStorage.setItem('kc_console_rec', recId); render() }
+
+  async function render() {
+    const r = recs.find((x) => x.id === recId)
+    $('#recmeta').textContent = `${r.epr_id} · ${r.address}`
+    const all = (await DB.all('handovers')).sort((a, b) => b.ts - a.ts)
+    const hs = all.filter((h) => h.recycler.id === recId)
+    const paid = hs.filter((h) => h.status === 'paid')
+    $('#k_kg').textContent = hs.filter((h) => h.status !== 'created').reduce((s, h) => s + h.kg, 0).toFixed(1) + ' kg'
+    $('#k_paid').textContent = inr(paid.reduce((s, h) => s + h.amount, 0))
+    $('#k_lots').textContent = hs.length
+    $('#k_pend').textContent = hs.filter((h) => h.status === 'created').length
+    const mats = {}
+    hs.filter((h) => h.status !== 'created').forEach((h) => h.items.forEach((i) => { mats[i.cat] = (mats[i.cat] || 0) + i.kg }))
+    $('#mats').innerHTML = Object.entries(mats).sort((a, b) => b[1] - a[1]).map(([c, kg]) => `<div><b>${kg.toFixed(1)}</b>${icon(c)} ${c.replace(/_/g, ' ')}</div>`).join('') || '<span class="muted">—</span>'
+    $('#empty').style.display = hs.length ? 'none' : ''
+    $('#rows').innerHTML = hs.map((h) => `<tr>
+      <td><b>${h.trace_id}</b></td><td>${new Date(h.ts).toLocaleString('en-IN', { dateStyle: 'short', timeStyle: 'short' })}</td>
+      <td>${h.collector?.name || '—'}<br><span class="muted">${h.collector?.cid || ''}</span></td>
+      <td>${h.items.map((i) => `${icon(i.cat)} ${i.kg}`).join(' ')}</td><td>${h.kg}</td><td>${inr(h.amount)}</td><td>${h.payment === 'cash' ? '💵' : '📲'}</td>
+      <td>${h.gps ? `<a style="color:#7dd3fc" target="_blank" href="https://www.openstreetmap.org/?mlat=${h.gps.lat}&mlon=${h.gps.lon}#map=16/${h.gps.lat}/${h.gps.lon}">✔</a>` : '—'}</td>
+      <td><span class="st ${h.status}">${h.status}</span></td>
+      <td>${h.status === 'created' ? `<input class="otp" placeholder="OTP" maxlength="4" data-id="${h.id}"> <button class="b-g" data-confirm="${h.id}">Confirm</button>` : h.status === 'confirmed' ? `<button class="b-o" data-pay="${h.id}">Mark paid</button>` : '✔'}</td></tr>`).join('')
+    document.querySelectorAll('[data-confirm]').forEach((b) => b.onclick = async () => {
+      const h = await DB.get('handovers', b.dataset.confirm), otp = document.querySelector(`input[data-id="${h.id}"]`).value.trim()
+      if (otp !== h.otp) return alert('OTP does not match. Ask the collector for the 4-digit code shown on their receipt.')
+      h.status = 'confirmed'; h.confirmed_ts = Date.now(); await DB.put('handovers', h); localStorage.setItem('kc_status_update', JSON.stringify({ id: h.id, status: 'confirmed', t: Date.now() })); render()
+    })
+    document.querySelectorAll('[data-pay]').forEach((b) => b.onclick = async () => {
+      const h = await DB.get('handovers', b.dataset.pay); h.status = 'paid'; h.paid_ts = Date.now(); await DB.put('handovers', h); localStorage.setItem('kc_status_update', JSON.stringify({ id: h.id, status: 'paid', t: Date.now() })); render()
+    })
+    // weekly bars
+    const weeks = [...Array(6)].map((_, i) => ({ v: 0, l: `W${i + 1}` })), now = Date.now()
+    hs.filter((h) => h.status !== 'created').forEach((h) => { const w = Math.floor((now - h.ts) / (7 * 864e5)); if (w < 6) weeks[5 - w].v += h.kg })
+    const mx = Math.max(1, ...weeks.map((w) => w.v))
+    $('#bars').innerHTML = weeks.map((w) => `<div style="height:${Math.max(2, w.v / mx * 100)}%" title="${w.v.toFixed(1)} kg"><span>${w.l}</span></div>`).join('')
+  }
+  $('#csv').onclick = async () => {
+    const hs = (await DB.all('handovers')).filter((h) => h.recycler.id === recId).sort((a, b) => a.ts - b.ts)
+    let prev = null, ok = true
+    for (const h of hs) { if (prev && h.prev_hash !== prev) ok = false; prev = h.hash }
+    const rows = [['trace_id', 'timestamp', 'collector_id', 'collector_name', 'recycler_epr_id', 'material', 'kg', 'rate_inr_kg', 'amount_inr', 'payment', 'status', 'lat', 'lon', 'hash', 'prev_hash']]
+    hs.forEach((h) => h.items.forEach((i) => rows.push([h.trace_id, new Date(h.ts).toISOString(), h.collector?.cid || '', h.collector?.name || '', h.recycler.epr_id, i.cat, i.kg, i.price, Math.round(i.kg * i.price), h.payment, h.status, h.gps?.lat ?? '', h.gps?.lon ?? '', h.hash, h.prev_hash])))
+    const blob = new Blob([rows.map((r) => r.map((v) => `"${String(v).replace(/"/g, '""')}"`).join(',')).join('\n')], { type: 'text/csv' })
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `epr_records_${recId}.csv`; a.click()
+    alert(ok ? 'Hash chain verified ✔ — export ready for CPCB EPR portal / Form-6.' : 'Warning: hash chain broken — records may have been altered.')
+  }
+  $('#demo').onclick = async () => {
+    const r = recs.find((x) => x.id === recId), names = ['Ramesh P.', 'Sunita W.', 'Imran S.', 'Meena K.', 'Saathi Hub']
+    const prices = await fetch('data/prices.json').then((x) => x.json())
+    let prev = await DB.kvGet('lastHash', '0'.repeat(64))
+    for (let i = 0; i < 5; i++) {
+      const cat = r.materials[i % r.materials.length], kg = +(1 + Math.random() * 12).toFixed(1), price = +(prices.categories[cat].today * r.price_factor).toFixed(1)
+      const rec = { id: uid(), ts: Date.now() - Math.floor(Math.random() * 30) * 864e5, collector: { name: names[i], cid: 'KC-C-' + (1000 + i) }, recycler: { id: r.id, name: r.name, epr_id: r.epr_id }, items: [{ cat, kg, price }], kg, amount: Math.round(kg * price), payment: i % 2 ? 'cash' : 'upi', gps: { lat: r.lat + (Math.random() - 0.5) * 0.1, lon: r.lon + (Math.random() - 0.5) * 0.1, acc: 12 }, otp: '0000', status: ['paid', 'paid', 'confirmed', 'paid', 'created'][i], prev_hash: prev, synced: true, demo: true }
+      rec.hash = await sha256(JSON.stringify({ ...rec, hash: undefined })); rec.trace_id = 'KC-' + rec.hash.slice(0, 10).toUpperCase(); prev = rec.hash
+      await DB.put('handovers', rec)
+    }
+    await DB.kvSet('lastHash', prev); render()
+  }
+  window.addEventListener('focus', render); setInterval(render, 4000)
+  render()
+})()
+</script>
+</body>
+</html>

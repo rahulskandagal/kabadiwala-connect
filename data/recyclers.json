@@ -1,0 +1,263 @@
+[
+ {
+  "id": "r1",
+  "name": "GreenCycle E-Waste Pvt Ltd",
+  "type": "recycler",
+  "epr_id": "EPR-R/MH/1024",
+  "lat": 21.0955,
+  "lon": 79.121,
+  "address": "Hingna MIDC, Nagpur",
+  "rating": 4.7,
+  "pickup": true,
+  "materials": [
+   "pcb",
+   "mobile_phone",
+   "laptop",
+   "cable_copper",
+   "led_tv",
+   "printer"
+  ],
+  "price_factor": 1.03,
+  "capacity_kg_day": 5000,
+  "hours": "09:00–18:00",
+  "phone": "+91 98xxx xxxxx",
+  "pays": [
+   "upi",
+   "cash"
+  ]
+ },
+ {
+  "id": "r2",
+  "name": "Nagpur Metal Recovery",
+  "type": "recycler",
+  "epr_id": "EPR-R/MH/0871",
+  "lat": 21.1702,
+  "lon": 79.041,
+  "address": "Butibori, Nagpur",
+  "rating": 4.4,
+  "pickup": false,
+  "materials": [
+   "cable_copper",
+   "compressor",
+   "pcb",
+   "small_appliance",
+   "crt"
+  ],
+  "price_factor": 0.98,
+  "capacity_kg_day": 500,
+  "hours": "09:00–18:00",
+  "phone": "+91 98xxx xxxxx",
+  "pays": [
+   "upi",
+   "cash"
+  ]
+ },
+ {
+  "id": "r3",
+  "name": "Saathi Aggregator Hub",
+  "type": "aggregator",
+  "epr_id": "AGG-MH-NGP-017",
+  "lat": 21.152,
+  "lon": 79.079,
+  "address": "Sitabuldi, Nagpur",
+  "rating": 4.9,
+  "pickup": true,
+  "materials": [
+   "mobile_phone",
+   "pcb",
+   "laptop",
+   "li_ion_battery",
+   "small_appliance",
+   "ewaste_plastic",
+   "printer",
+   "led_tv"
+  ],
+  "price_factor": 0.99,
+  "capacity_kg_day": 500,
+  "hours": "09:00–18:00",
+  "phone": "+91 98xxx xxxxx",
+  "pays": [
+   "cash",
+   "upi"
+  ]
+ },
+ {
+  "id": "r4",
+  "name": "Vidarbha Battery Recyclers",
+  "type": "recycler",
+  "epr_id": "EPR-R/MH/1310",
+  "lat": 21.2,
+  "lon": 79.15,
+  "address": "Kamptee Road, Nagpur",
+  "rating": 4.2,
+  "pickup": true,
+  "materials": [
+   "li_ion_battery",
+   "lead_acid_battery"
+  ],
+  "price_factor": 1.06,
+  "capacity_kg_day": 2000,
+  "hours": "09:00–18:00",
+  "phone": "+91 98xxx xxxxx",
+  "pays": [
+   "upi",
+   "cash"
+  ]
+ },
+ {
+  "id": "r5",
+  "name": "EcoReturn Recyclers",
+  "type": "recycler",
+  "epr_id": "EPR-R/MH/0442",
+  "lat": 21.065,
+  "lon": 79.05,
+  "address": "Wadi, Nagpur",
+  "rating": 4.5,
+  "pickup": false,
+  "materials": [
+   "led_tv",
+   "crt",
+   "printer",
+   "small_appliance",
+   "ewaste_plastic"
+  ],
+  "price_factor": 1.0,
+  "capacity_kg_day": 2000,
+  "hours": "09:00–18:00",
+  "phone": "+91 98xxx xxxxx",
+  "pays": [
+   "upi",
+   "cash"
+  ]
+ },
+ {
+  "id": "r6",
+  "name": "Orange City Scrap Collective",
+  "type": "aggregator",
+  "epr_id": "AGG-MH-NGP-031",
+  "lat": 21.135,
+  "lon": 79.11,
+  "address": "Sadar, Nagpur",
+  "rating": 4.6,
+  "pickup": true,
+  "materials": [
+   "cable_copper",
+   "compressor",
+   "small_appliance",
+   "ewaste_plastic",
+   "crt"
+  ],
+  "price_factor": 0.96,
+  "capacity_kg_day": 1000,
+  "hours": "09:00–18:00",
+  "phone": "+91 98xxx xxxxx",
+  "pays": [
+   "cash",
+   "upi"
+  ]
+ },
+ {
+  "id": "r7",
+  "name": "Pune E-Recyclers Ltd",
+  "type": "recycler",
+  "epr_id": "EPR-R/MH/0208",
+  "lat": 18.59,
+  "lon": 73.74,
+  "address": "Hinjewadi, Pune",
+  "rating": 4.6,
+  "pickup": true,
+  "materials": [
+   "pcb",
+   "mobile_phone",
+   "laptop",
+   "led_tv",
+   "li_ion_battery"
+  ],
+  "price_factor": 1.04,
+  "capacity_kg_day": 2000,
+  "hours": "09:00–18:00",
+  "phone": "+91 98xxx xxxxx",
+  "pays": [
+   "upi",
+   "cash"
+  ]
+ },
+ {
+  "id": "r8",
+  "name": "Mumbai Urban Mining Co",
+  "type": "recycler",
+  "epr_id": "EPR-R/MH/0115",
+  "lat": 19.11,
+  "lon": 72.9,
+  "address": "Bhandup, Mumbai",
+  "rating": 4.3,
+  "pickup": true,
+  "materials": [
+   "pcb",
+   "mobile_phone",
+   "laptop",
+   "cable_copper",
+   "led_tv",
+   "printer",
+   "compressor"
+  ],
+  "price_factor": 1.02,
+  "capacity_kg_day": 1000,
+  "hours": "09:00–18:00",
+  "phone": "+91 98xxx xxxxx",
+  "pays": [
+   "upi",
+   "cash"
+  ]
+ },
+ {
+  "id": "r9",
+  "name": "Aurangabad Green Metals",
+  "type": "recycler",
+  "epr_id": "EPR-R/MH/0967",
+  "lat": 19.876,
+  "lon": 75.343,
+  "address": "Waluj MIDC, Chh. Sambhajinagar",
+  "rating": 4.1,
+  "pickup": false,
+  "materials": [
+   "cable_copper",
+   "compressor",
+   "lead_acid_battery",
+   "crt"
+  ],
+  "price_factor": 0.97,
+  "capacity_kg_day": 2000,
+  "hours": "09:00–18:00",
+  "phone": "+91 98xxx xxxxx",
+  "pays": [
+   "upi",
+   "cash"
+  ]
+ },
+ {
+  "id": "r10",
+  "name": "Nashik Circuit Recyclers",
+  "type": "recycler",
+  "epr_id": "EPR-R/MH/1188",
+  "lat": 19.9975,
+  "lon": 73.7898,
+  "address": "Ambad MIDC, Nashik",
+  "rating": 4.4,
+  "pickup": true,
+  "materials": [
+   "pcb",
+   "laptop",
+   "mobile_phone",
+   "printer"
+  ],
+  "price_factor": 1.01,
+  "capacity_kg_day": 1000,
+  "hours": "09:00–18:00",
+  "phone": "+91 98xxx xxxxx",
+  "pays": [
+   "upi",
+   "cash"
+  ]
+ }
+]
